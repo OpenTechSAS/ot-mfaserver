@@ -9,7 +9,7 @@ WORKDIR /app
 COPY --from=build /app/node_modules ./node_modules
 COPY src ./src
 COPY package.json ./
-RUN mkdir -p /data
+RUN mkdir -p /data && chown node:node /data
 EXPOSE 8090
 USER node
 ENTRYPOINT ["tini", "--"]
